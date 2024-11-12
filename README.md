@@ -13,13 +13,8 @@ This is a TypeScript-based project that simulates a movie collection system. The
 - **Genres**: Movies can be assigned to specific genres (e.g., Action, Drama).
 
 ## Project Structure
-- src/
-    **genre.ts**: Genre class definition
-    **media.ts**: Abstract Media class
-    **movie.ts**: Movie class (extends Media)
-    **imovie_collection.ts**: MovieCollection interface
-    **movie_collection.ts**: MovieCollection class (handles movie operations)
-- main.ts: Entry point (runs the application)
+
+src/ ├── genre.ts # Genre class definition ├── media.ts # Abstract Media class ├── movie.ts # Movie class (extends Media) ├── movie_collection.ts # MovieCollection class (handles movie operations) ├── imovie_collection.ts # MovieCollection interface (you can remove this if you no longer use it) └── main.ts # Entry point (runs the application)
 
 ## Installation
 To run the project, follow these steps:
