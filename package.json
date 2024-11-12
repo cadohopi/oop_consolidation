@@ -4,5 +4,10 @@
   },
   "devDependencies": {
     "@types/readline-sync": "^1.4.8"
+  },
+  
+  "scripts": {
+  "start": "ts-node main.ts"
   }
+
 }
