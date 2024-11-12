@@ -1,4 +1,6 @@
 // Genre.ts
-export class Genre {
+class Genre {
   constructor(public name: string, public description: string) {}
 }
+
+export default Genre;

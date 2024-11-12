@@ -1,30 +1,28 @@
 // Movie.ts
-import { Media } from './media';
-import { Genre } from './genre';
+import Media from './media';
+import Genre from './genre';
+import IMovie from './imovie';
 
-export class Movie extends Media{
-    constructor(
-        public title: string,
-        public director: string,
-        public releaseYear: number,
-        public genre: Genre,
-        private rating: number = 0 // default value
-    ) {
-        super(title, releaseYear, director); // Gọi constructor của lớp Media
-    }
+class Movie extends Media implements IMovie {
+  protected rating: number = 0;
+  public genre: Genre;
 
-        getDetails(): string {
-        return `${this.title} (${this.releaseYear}) directed by ${this.director} - Genre: ${this.genre.name} - Rating: ${this.rating}/5`;
-    }
+  constructor(title: string, director: string, releaseYear: number, genre: Genre) {
+    super(title, releaseYear, director);
+    this.genre = genre;
+  }
 
-        setRating(rating: number): void {
-        if (rating < 0 || rating > 5) {
-        throw new Error("Rating must be between 0 and 5");
-        }
-        this.rating = rating;
-        }
+  setRating(rating: number): void {
+    this.rating = rating;
+  }
 
-        getRating(): number {
-            return this.rating;
-    }
+  getRating(): number {
+    return this.rating;
+  }
+
+  getDetails(): string {
+    return `- ${super.getDetails()} - Genre: ${this.genre.name} - Rating: ${this.getRating() || "Not rated yet"}`;
+  }
 }
+
+export default Movie;
