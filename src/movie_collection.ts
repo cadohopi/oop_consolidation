@@ -5,6 +5,10 @@ import IMovieCollection from './imovie_collection';
 class MovieCollection implements IMovieCollection {
     private movies: IMovie[] = [];
 
+    constructor(initialMovies: IMovie[] = []) {
+    this.movies = initialMovies;
+  }
+
     // Hàm thêm phim
     addMovie(movie: IMovie): void {
         this.movies.push(movie);

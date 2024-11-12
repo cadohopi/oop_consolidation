@@ -8,7 +8,7 @@ class Movie extends Media implements IMovie {
   public genre: Genre;
 
   constructor(title: string, director: string, releaseYear: number, genre: Genre) {
-    super(title, releaseYear, director);
+    super(title, director, releaseYear);
     this.genre = genre;
   }
 
@@ -20,8 +20,9 @@ class Movie extends Media implements IMovie {
     return this.rating;
   }
 
+  // Triển khai phương thức trừu tượng getDetails từ Media
   getDetails(): string {
-    return `- ${super.getDetails()} - Genre: ${this.genre.name} - Rating: ${this.getRating() || "Not rated yet"}`;
+    return `Title: ${this.title}, Release Year: ${this.releaseYear}, Directed by: ${this.director} - Genre: ${this.genre.name} - Rating: ${this.rating || "Not rated yet"}`;
   }
 }
 
