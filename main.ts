@@ -15,9 +15,11 @@ genres.push(action, drama);
 const movie1 = new Movie("Inception", "Christopher Nolan", 2010, action);
 const movie2 = new Movie("The Shawshank Redemption", "Frank Darabont", 1994, drama);
 
+// Rating cho phim vừa tạo
 movie1.setRating(4.8);
 movie2.setRating(5);
 
+// Thêm phim vào collection
 movieCollection.addMovie(movie1);
 movieCollection.addMovie(movie2);
 
