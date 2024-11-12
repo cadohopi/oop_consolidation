@@ -1,5 +1,3 @@
-# oop_consolidation
-
 # Movie Collection Project
 
 This is a TypeScript-based project that simulates a movie collection system. The system allows you to add, rate, search, and remove movies, as well as organize them into genres. The project demonstrates the use of classes, inheritance, interfaces, method overloading, and other TypeScript features.

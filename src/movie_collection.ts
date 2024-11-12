@@ -9,7 +9,7 @@ class MovieCollection {
         this.movies = initialMovies;
     }
 
-    // OVerload
+    // Overload
     addMovie(movie: Movie): void;
 
     addMovie(movies: Movie[]): void;
@@ -22,14 +22,17 @@ class MovieCollection {
         }
     }
 
+    // Danh sách phim trong collection
     listMovies(): string[] {
         return this.movies.map(movie => movie.getDetails());
     }
 
+    // Tìm phim theo title
     findMovieByTitle(title: string): Movie | null {
         return this.movies.find(movie => movie.title.toLowerCase() === title.toLowerCase()) || null;
     }
 
+    // Đánh giá phim
     rateMovie(title: string, rating: number): string {
         const movie = this.findMovieByTitle(title);
         if (movie) {
@@ -40,6 +43,7 @@ class MovieCollection {
         }
     }
 
+    // Xóa phim khỏi collection
     removeMovie(title: string): string {
         const index = this.movies.findIndex(movie => movie.title.toLowerCase() === title.toLowerCase());
         if (index !== -1) {
