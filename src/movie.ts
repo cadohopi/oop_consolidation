@@ -1,9 +1,8 @@
 // Movie.ts
 import Media from './media';
 import Genre from './genre';
-import IMovie from './imovie';
 
-class Movie extends Media implements IMovie {
+class Movie extends Media {
   protected rating: number = 0;
   public genre: Genre;
 

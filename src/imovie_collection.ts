@@ -1,10 +1,10 @@
 // IMovieCollection.ts
-import IMovie from "./imovie";
+import Movie from "./movie";
 
 interface IMovieCollection {
-  addMovie(movie: IMovie): void;
+  addMovie(movie: Movie): void;
   listMovies(): string[];
-  findMovieByTitle(title: string): IMovie | null;
+  findMovieByTitle(title: string): Movie | null;
   rateMovie(title: string, rating: number): string;
   removeMovie(title: string): string;
 }
