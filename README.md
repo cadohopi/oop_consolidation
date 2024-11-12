@@ -15,10 +15,10 @@ This is a TypeScript-based project that simulates a movie collection system. The
 ## Project Structure
 
 src/ ├── genre.ts # Genre class definition  
-       ├── media.ts # Abstract Media class  
-       ├── movie.ts # Movie class (extends Media)  
-       ├── imovie_collection.ts # MovieCollection interface  
-       ├── movie_collection.ts # MovieCollection class (handles movie operations)  
+         ├── media.ts # Abstract Media class  
+         ├── movie.ts # Movie class (extends Media)  
+         ├── imovie_collection.ts # MovieCollection interface  
+         ├── movie_collection.ts # MovieCollection class (handles movie operations)  
 └── main.ts # Entry point (runs the application)
 
 ## Installation
