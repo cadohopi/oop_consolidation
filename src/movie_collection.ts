@@ -9,8 +9,17 @@ class MovieCollection {
         this.movies = initialMovies;
     }
 
-    addMovie(movie: Movie): void {
-        this.movies.push(movie);
+    // OVerload
+    addMovie(movie: Movie): void;
+
+    addMovie(movies: Movie[]): void;
+
+    addMovie(movieOrMovies: Movie | Movie[]): void {
+        if (Array.isArray(movieOrMovies)) {
+            this.movies.push(...movieOrMovies); // Thêm một danh sách phim
+        } else {
+            this.movies.push(movieOrMovies); // Thêm 1 phim duy nhất
+        }
     }
 
     listMovies(): string[] {

@@ -11,9 +11,12 @@ const action = new Genre("Action", "Fast-paced movies with a lot of physical act
 const drama = new Genre("Drama", "Movies with realistic settings and intense character development.");
 genres.push(action, drama);
 
-// Tạo phim và thêm vào thư viện
+// Tạo phim và thêm vào collection
 const movie1 = new Movie("Inception", "Christopher Nolan", 2010, action);
 const movie2 = new Movie("The Shawshank Redemption", "Frank Darabont", 1994, drama);
+
+const movie3 = new Movie("Movie 3", "Frank Darabont", 1994, drama);
+const movie4 = new Movie("Movie 4", "Frank Darabont", 1994, action);
 
 // Rating cho phim vừa tạo
 movie1.setRating(4.8);
@@ -22,6 +25,9 @@ movie2.setRating(5);
 // Thêm phim vào collection
 movieCollection.addMovie(movie1);
 movieCollection.addMovie(movie2);
+
+// Thêm cùng lúc 2 phim vào collection
+movieCollection.addMovie([movie3, movie4]);
 
 function showMenu() {
   console.log("\n--- Movie Collection Menu ---");
