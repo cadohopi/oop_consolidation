@@ -38,10 +38,10 @@ To run the project, follow these steps:
 4. **Install ts-node and typescript**:
    ```bash
    npm install ts-node typescript --save-dev
-5. **Modify the package.json**:
-   In your package.json, under the "scripts" section, you can add:
-    "scripts": {
-        "start": "ts-node src/main.ts"
+5. **Modify the package.json**:  
+   In your package.json, under the "scripts" section, you can add:  
+    "scripts": {  
+        "start": "ts-node src/main.ts"  
     }
 6. **Run the Project with ts-node**:
    ```bash
