@@ -15,8 +15,11 @@ class Truck extends Vehicle {
     }
 
     // Overload method to calculate the maintenance with optional factor
-    public calculateMaintenanceCost(weightFactor = 2): number {
-        return 150 * weightFactor;
+    public calculateMaintenanceCost(): number;
+    public calculateMaintenanceCost(weightFactor: number): number;
+
+    public calculateMaintenanceCost(weightFactor?: number): number {
+        return weightFactor !== undefined ? 200 * weightFactor : 100;
     }
 }
 

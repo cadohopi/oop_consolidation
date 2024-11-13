@@ -15,7 +15,6 @@ class Mortocycle extends Vehicle {
         return `${super.getInfo()}, Motorcycle ${sidecarInfor}`;
     }
 
-    // Overload method to calculate the maintenance for motorcycle
     public calculateMaintenanceCost(): number {
         return 75;
     }

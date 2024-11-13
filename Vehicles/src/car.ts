@@ -15,9 +15,13 @@ class Car extends Vehicle {
     }
 
     // Overload method to calculate the maintenance with optional factor
-    public calculateMaintenanceCost(factor: number = 1): number {
-        return 150 * factor;
+    public calculateMaintenanceCost(): number;
+    public calculateMaintenanceCost(factor: number): number;
+
+    public calculateMaintenanceCost(factor?: number): number {
+        return factor !== undefined ? 150 * factor : 100;
     }
+
 }
 
 export default Car;
