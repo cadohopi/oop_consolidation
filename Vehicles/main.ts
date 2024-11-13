@@ -8,6 +8,10 @@ function run() {
     console.log(car1.getInfo());
     console.log("Maintenance Cost:", car1.calculateMaintenanceCost(1.3));
 
+    const car2 = new Car("Ferrari", "SF90", 2023, 2);
+    console.log(car2.getInfo());
+    console.log("Maintenance Cost:", car2.calculateMaintenanceCost());
+
     const truck1 = new Truck("Ford", "F-150", 2019, 4);
     console.log(truck1.getInfo());
     console.log("Maintenance Cost:", truck1.calculateMaintenanceCost(3));
