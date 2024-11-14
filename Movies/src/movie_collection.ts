@@ -1,4 +1,5 @@
 // MovieCollection.ts
+import * as readline from 'readline-sync';
 import Movie from './movie';
 import IMovieCollection from './imovie_collection';
 
@@ -23,8 +24,14 @@ class MovieCollection {
     }
 
     // Danh sách phim trong collection
-    listMovies(): string[] {
-        return this.movies.map(movie => movie.getDetails());
+    listMovies(): void {
+        if (this.movies.length === 0) {
+            console.log("No movies in the collection");
+        } else {
+            this.movies.forEach((movie, index) => {
+                console.log(`${index + 1}. ${movie.getDetails()}`);
+            })
+        }
     }
 
     // Tìm phim theo title
@@ -33,25 +40,33 @@ class MovieCollection {
     }
 
     // Đánh giá phim
-    rateMovie(title: string, rating: number): string {
-        const movie = this.findMovieByTitle(title);
-        if (movie) {
-        movie.setRating(rating);
-        return `Rating set for movie "${movie.title}"!`;
+    rateMovie(): void {
+        console.log("Movies in the colection: ");
+        this.listMovies();
+        const serialNumber = readline.questionInt("Enter the number of the movie to rate: ");
+
+        if (serialNumber > 0 && serialNumber <= this.movies.length) {
+            const rating = readline.questionInt("Enter rating [0-5]: ");
+            this.movies[serialNumber - 1].setRating(rating);
+            console.log(`Movie "${this.movies[serialNumber - 1].title}" rated  successfully!`);
         } else {
-        return `Movie with title "${title}" not found.`;
+            console.log("Invalid serial number!");
         }
     }
 
     // Xóa phim khỏi collection
-    removeMovie(title: string): string {
-        const index = this.movies.findIndex(movie => movie.title.toLowerCase() === title.toLowerCase());
-        if (index !== -1) {
-        const removedMovie = this.movies.splice(index, 1)[0];
-        return `Movie "${removedMovie.title}" has been removed from the library.`;
+    removeMovie(): void {
+        console.log("Movies in the collection: ");
+        this.listMovies();
+        const serialNumber = readline.questionInt("Enter the number of movie to remove: ");
+
+        if (serialNumber > 0 && serialNumber <= this.movies.length) {
+            const removeMovie = this.movies.splice(serialNumber - 1, 1);
+            console.log(`Movie ${removeMovie[0].title} removed successfully!`);
         } else {
-        return `Movie with title "${title}" not found.`;
+            console.log("Invalid serial number!");
         }
+
     }
 }
 

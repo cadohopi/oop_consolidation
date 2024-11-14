@@ -47,7 +47,7 @@ function handleMenu() {
     switch (choice) {
       case '1':
         console.log("\nMovies in the library:");
-        movieCollection.listMovies().forEach(movieDetails => console.log(movieDetails));
+        movieCollection.listMovies();
         break;
       case '2':
         const searchTitle = readline.question("Input the title: ");
@@ -59,9 +59,8 @@ function handleMenu() {
         }
         break;
       case '3':
-        const rateTitle = readline.question("Enter the title of the movie to rate: ");
-        const rating = parseFloat(readline.question("Enter rating (0-5): "));
-        console.log(movieCollection.rateMovie(rateTitle, rating));
+        console.log("\n Rate movie: ");
+        movieCollection.rateMovie();
         break;
       case '4':
         const title = readline.question("Enter the movie title: ");
@@ -78,8 +77,8 @@ function handleMenu() {
         console.log(`Movie "${title}" added to the library.`);
         break;
       case '5':
-        const removeTitle = readline.question("Enter the title of the movie to remove: ");
-        console.log(movieCollection.removeMovie(removeTitle));
+        console.log("\n Remove movie!");
+        movieCollection.removeMovie();
         break;
       case '6':
         exit = true;
