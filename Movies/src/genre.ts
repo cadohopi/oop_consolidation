@@ -7,6 +7,15 @@ class Genre {
     this.name = name;
     this.description = description;
   }
+
+  getName(): string{
+    return this.name;
+  }
+
+  getGenreDetails(): string {
+    return `${this.name}: ${this.description}`
+  }
+
 }
 
 export default Genre;

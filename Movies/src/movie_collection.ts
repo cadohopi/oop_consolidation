@@ -1,9 +1,20 @@
 // MovieCollection.ts
 import * as readline from 'readline-sync';
 import Movie from './movie';
+import Genre from './genre';
 import IMovieCollection from './imovie_collection';
+import GenreCollecttion from './genre_collection';
 
-class MovieCollection {
+const genreCollecttion = new GenreCollecttion();
+
+// Tạo các thể loại
+const action = new Genre("Action", "Fast-paced movies with a lot of physical activity.");
+const drama = new Genre("Drama", "Movies with realistic settings and intense character development.");
+
+// Thêm genre vào collection
+genreCollecttion.genres.push(action, drama);
+
+class MovieCollection implements IMovieCollection {
     private movies: Movie[] = [];
 
     constructor(initialMovies: Movie[] = []) {
@@ -13,15 +24,40 @@ class MovieCollection {
     // Overload
     addMovie(movie: Movie): void;
 
-    addMovie(movies: Movie[]): void;
+    addMovie(title: string, director: string, releaseYear: number, genre: Genre): void;
 
-    addMovie(movieOrMovies: Movie | Movie[]): void {
-        if (Array.isArray(movieOrMovies)) {
-            this.movies.push(...movieOrMovies); // Thêm một danh sách phim
+    addMovie(arg1: Movie | string, arg2?: string, arg3?: number, arg4?: Genre): void {
+        // Nếu arg1 là 1 movie
+        if (arg1 instanceof Movie) {
+            this.movies.push(arg1);
+            console.log(`Movie ${arg1.title} added successfully!`);
+        } else if (typeof arg1 === 'string' && arg2 && arg3 && arg4) {
+            const newMovie = new Movie(arg1, arg2, arg3, arg4);
+            this.movies.push(newMovie);
+            console.log(`Movie ${arg1} added successfully!`);
         } else {
-            this.movies.push(movieOrMovies); // Thêm 1 phim duy nhất
+            console.log("Error!");
         }
     }
+
+
+    // Thêm nhiều phim từ bàn phím
+    addMovies(): void{
+        while (true) {
+            const title = readline.question("Enter title (type 'no' to stop): ");
+            if (title.toLowerCase() === 'no') break;
+            
+            const director = readline.question("Enter the director: ");
+            const releaseYear = parseInt(readline.question("Enter the release year: "), 10);
+            
+            console.log("Choose a genre:");
+            genreCollecttion.listGenre();
+            const genreChoice = parseInt(readline.question("Choose a genre number: "), 10);
+            if (genreChoice > 0 && genreChoice <= genreCollecttion.genres.length) {
+                this.addMovie(title, director, releaseYear, genreCollecttion.genres[genreChoice - 1]);
+            }
+        }
+    } 
 
     // Danh sách phim trong collection
     listMovies(): void {

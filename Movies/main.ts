@@ -1,40 +1,14 @@
 // main.ts
 import * as readline from 'readline-sync';
-import Genre from './src/genre';
-import Movie from './src/movie';
 import MovieCollection from './src/movie_collection';
 const movieCollection = new MovieCollection();
-const genres: Genre[] = [];
-
-// Tạo các thể loại
-const action = new Genre("Action", "Fast-paced movies with a lot of physical activity.");
-const drama = new Genre("Drama", "Movies with realistic settings and intense character development.");
-genres.push(action, drama);
-
-// Tạo phim và thêm vào collection
-const movie1 = new Movie("Inception", "Christopher Nolan", 2010, action);
-const movie2 = new Movie("The Shawshank Redemption", "Frank Darabont", 1994, drama);
-
-const movie3 = new Movie("Movie 3", "Frank Darabont", 1994, drama);
-const movie4 = new Movie("Movie 4", "Frank Darabont", 1994, action);
-
-// Rating cho phim vừa tạo
-movie1.setRating(4.8);
-movie2.setRating(5);
-
-// Thêm phim vào collection
-movieCollection.addMovie(movie1);
-movieCollection.addMovie(movie2);
-
-// Thêm cùng lúc 2 phim vào collection
-movieCollection.addMovie([movie3, movie4]);
 
 function showMenu() {
   console.log("\n--- Movie Collection Menu ---");
   console.log("1. List all movies");
   console.log("2. Search for a movie by title");
   console.log("3. Rate a movie");
-  console.log("4. Add a new movie");
+  console.log("4. Add new movie(s)");
   console.log("5. Remove a movie");
   console.log("6. Exit");
 }
@@ -63,18 +37,7 @@ function handleMenu() {
         movieCollection.rateMovie();
         break;
       case '4':
-        const title = readline.question("Enter the movie title: ");
-        const director = readline.question("Enter the director: ");
-        const releaseYear = parseInt(readline.question("Enter the release year: "), 10);
-        
-        console.log("Choose a genre:");
-        genres.forEach((genre, index) => console.log(`${index + 1}. ${genre.name} - ${genre.description}`));
-        const genreChoice = parseInt(readline.question("Choose a genre number: "), 10) - 1;
-        const genre = genres[genreChoice] || drama; // Default to drama if invalid
-
-        const newMovie = new Movie(title, director, releaseYear, genre);
-        movieCollection.addMovie(newMovie);
-        console.log(`Movie "${title}" added to the library.`);
+        movieCollection.addMovies();
         break;
       case '5':
         console.log("\n Remove movie!");
